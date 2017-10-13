@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="UTF-8">
+    <meta charset="UTF-8">
+    <title>天气预报</title>
+    <style>
+        #tp-weather-widget{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id = "tp-weather-widget" > </div>
+        <script > (function (T, h, i, n, k, P, a, g, e) {
+            g = function () {
+                P = h.createElement(i);
+                a = h.getElementsByTagName(i)[0];
+                P.src = k;
+                P.charset = "utf-8";
+                P.async = 1;
+                a.parentNode.insertBefore(P, a)
+            };
+            T["ThinkPageWeatherWidgetObject"] = n;
+            T[n] || (T[n] = function () {
+                (T[n].q = T[n].q || []).push(arguments)
+            });
+            T[n].l = +new Date();
+            if (T.attachEvent) {
+                T.attachEvent("onload", g)
+            } else {
+                T.addEventListener("load", g, false)
+            }
+        }(window, document, "script", "tpwidget", "//widget.thinkpage.cn/widget/chameleon.js"))</script>
+        <script>
+            tpwidget("init", {
+                "flavor": "slim",
+                "location": "WT029G15ETRJ",
+                "geolocation": "disabled",
+                "language": "zh-chs",
+                "unit": "c",
+                "theme": "chameleon",
+                "container": "tp-weather-widget",
+                "bubble": "enabled",
+                "alarmType": "badge",
+                "uid": "U7DA73CD04",
+                "hash": "293e8f36c4fc921fdaa91b781324dcbf"
+            });
+            tpwidget("show");
+        </script>
+
+</body>
+</html>

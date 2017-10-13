@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<style type="text/css">-->
+        <!--*{margin: 0;padding: 0;}-->
+        <!--div{border: 1px solid red;}-->
+        <!--.column1{height:50px;border: none;margin-bottom: 5px;}-->
+        <!--.column1 div{float: left;display: block;width: 90px; height: 50px;}-->
+        <!--.column2{height: 50px;border: none;margin-bottom: 5px;}-->
+        <!--.column1-2{margin-left: 5px;}-->
+        <!--.column1-3{margin-left: 5px;}-->
+        <!--.column2 .column2-1{float: left;display: block;width: 187px;height: 50px;}-->
+        <!--.column2 .column2-2{float: left;display: block;width:90px;margin-left: 5px;height: 50px;}-->
+        <!--.column3{width: 284px;height: 50px;}-->
+    <!--</style>-->
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        #all{display: flex;flex-direction: column;}
+        .column1{
+            display: flex;width: 100%; flex: 1;}
+        .column1 div{flex: 1;border: 1px solid red;height: 100%;}
+        .column1-2{margin: 0 5px 0 5px;}
+        .column2{display: flex;width: 100%;margin-top: 5px;flex: 1;}
+        .column2 div{border: 1px solid red;height: 100%;}
+        .column2 .column2-1{flex: 2;}
+        .column2 .column2-2{flex: 1;margin-left: 5px;}
+        .column3{flex: 1;border: 1px solid red;margin-top: 5px;}
+    </style>
+    <script>
+        window.onload=function () {
+            var mHeight=window.innerHeight;
+            var all=$('#all');
+            console.log(all);
+            all.css('height',mHeight);
+        }
+    </script>
+</head>
+<body>
+<div id="all">
+    <div class="column1">
+        <div class="column1-1">
+
+        </div>
+        <div class="column1-2">
+
+        </div>
+        <div class="column1-3">
+
+        </div>
+    </div>
+    <div class="column2">
+        <div class="column2-1">
+
+        </div>
+        <div class="column2-2">
+
+        </div>
+    </div>
+    <div class="column3">
+
+    </div>
+</div>
+</body>
+</html>

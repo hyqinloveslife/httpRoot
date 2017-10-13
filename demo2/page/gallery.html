@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>海报画廊效果</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        body{
+            background: #fff;
+            color: #555;
+            font-family: 'Avenir Next','Lantinghei SC';
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .warp{
+            width: 100%;height: 600px;position: absolute;
+            top:50%;margin-top: -300px;background: #333;overflow: hidden;
+            -webkit-perspective: 800px;
+        }
+        /*海报样式*/
+        .photo{
+            width: 260px;height: 320px;position: absolute;z-index: 1;box-shadow: 0 0 1px rgba(0,0,0,.01);
+        }
+        .photo .side{
+            width: 100%;height: 100%;background: #eee;position: absolute;top: 0;right: 0;
+            padding: 20px;box-sizing: border-box;
+        }
+        .photo .side-front{
+
+        }
+        .photo .side-front .image{
+            width: 100%;height: 250px;line-height: 250px;overflow: hidden;
+        }
+        .photo .side-front .image img{
+            width: 100%;
+        }
+        .photo .side-front .caption{
+            text-align: center;font-size: 16px;line-height: 50px;
+        }
+        .photo .side-back{
+
+        }
+        .photo .side-back .desc{
+            color: #666;
+            font-size: 14px;line-height: 1.5em;
+        }
+        /*当前选中的海报样式*/
+        .photo_center{
+            width: 260px;height: 320px;
+            left: 50%;top:50%;margin: -160px 0 0 -130px;z-index: 999;
+        }
+        /*负责翻转*/
+        .photo-wrap{
+            position: absolute;width: 100%;height: 100%;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transition: all 0.6s;
+        }
+        .photo-wrap .side{
+            -webkit-backface-visibility: hidden;
+        }
+        .photo-wrap .side-front{
+            -webkit-transform: rotateY(0deg);
+        }
+        .photo-wrap .side-back{
+            -webkit-transform: rotateY(180deg);
+        }
+        /*photo的两种状态*/
+        .photo-front .photo-wrap{
+            -webkit-transform: rotateY(0deg);
+        }
+        .photo-back .photo-wrap{
+            -webkit-transform: rotateY(180deg);
+        }
+
+        /*    */
+        .btn{position: fixed;bottom: 10px;right: 10px;}
+    </style>
+</head>
+<body onselectstart="return false">
+<!--改写视图，为模板字符串-->
+    <div class="warp" id="wrap">
+        <!--photo负责平移和旋转-->
+        <div class="photo photo-front" id="photo_{{index}}" onclick="turn(this)">
+            <!--photo-wrap负责翻转-->
+            <div class="photo-wrap">
+                <div class="side side-front">
+                    <p class="image">
+                        <img src="../img/{{img}}">
+                    </p>
+                    <p class="caption">{{caption}}</p>
+                </div>
+                <div class="side side-back">
+                    <p class="desc">
+                        {{desc}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="btn" onclick="rsort(2)">
+            点击
+        </div>
+    </div>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(function () {
+        addPhotos();
+
+    })
+
+    window.onload=rsort(3);
+
+    function g (selector) {
+        console.log("==>"+$(selector));
+        return $(selector);
+    }
+    
+    //随机
+    function rando (arg1,arg2) {
+        var max=Math.max(arg1,arg2);
+        var min=Math.min(arg1,arg2);
+
+        var diff=max-min;//一个差值
+        var number=Math.ceil((Math.random()*diff+min));
+        console.log("number     "+number);
+        return number;
+    }
+
+    function addPhotos () {
+        //4.输出所有的海报
+        var data=[];
+        var template=g("#wrap").html();
+        var html=[];
+        $.ajax({
+            method:'get',
+            url:'../source/data.json',
+            dataType:'text',
+            success:function (result) {
+                data=JSON.parse(result);
+                console.log(data);
+                for(s in data){
+                    console.log(data[s]);
+                    var _html=template
+                            .replace('{{index}}',s)
+                            .replace('{{img}}',data[s].img)
+                            .replace('{{caption}}',data[s].caption)
+                            .replace('{{desc}}',data[s].desc);
+                    html.push(_html);
+//                    console.log("html: "+html);
+                }
+                //g("#wrap").innerHTML=html;
+                $('#wrap').html(html);
+            }
+        });
+        //全部渲染完以后，为什么不行？
+        console.log("len : "+data.length);
+        //rsort(2);
+    }
+//    addPhotos();
+
+    //5.排序海报
+    function rsort (n) {
+        console.log("n "+n);
+        var id=$('#photo_'+(n+1));
+        id.addClass('photo_center');
+    }
+    //1.翻面控制
+    function turn (element) {
+        var cls=element.className;
+        console.log("className : "+cls);
+        //用正则表达式来判断
+        console.log(/photo-front/.test(cls));
+        //为什么这里判断全是true?
+        if(/photo-front/.test(cls)){
+            //为什么替换这里没效果？
+            cls=cls.replace(/photo-front/,"photo-back");
+            console.log(cls);
+        }else{
+            cls=cls.replace(/photo-back/,"photo-front");
+            console.log(cls);
+        }
+        return element.className=cls;
+    }
+
+
+</script>
+</body>
+</html>

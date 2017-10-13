@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{
+           background: url("../img/bg.jpg") center;
+        }
+        .content{
+            max-width: 300px;
+            background: #338833;
+            border-radius: 10px;
+            margin: 100px auto;
+            text-align: center;
+            padding: 30px 0;
+        }
+        .log-title{
+            height: 40px;line-height: 40px;font-family: 微软雅黑;font-size: 22px;
+        }
+        .content input{
+            margin: 10px 0;
+        }
+        input.typing{
+            width: 280px;height: 40px;border-radius: 10px;font-size: 20px;outline: none;border: none;
+        }
+        input.btn{
+            width: 100px;height: 30px;border-radius: 10px;border: none;
+        }
+        .sure{
+            background: #0ff;
+        }
+        /*css3动画效果*/
+        .snow{
+            position: fixed;
+            top:0;left: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <p class="log-title">登录</p>
+        <form action="" method="post">
+            <input class="typing" type="text" name="account" value="" placeholder="">
+            <hr>
+            <input class="typing" type="password" name="password" value="" placeholder="">
+            <hr>
+            <input class="btn" type="reset">
+            <input class="btn sure" type="submit">
+        </form>
+        <a href="">没有账号？注册</a>
+    </div>
+    <div class="snow">
+        <img src="../img/icon/Snow.png">
+    </div>
+
+
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        var mHeight=window.innerHeight;
+        var mLeft=Math.random();
+        console.log(mLeft);
+//        console.log(mHeight);
+        $(function () {
+            $('.snow').animate({
+                top:mHeight
+            },10000,"",createSnow)
+
+            function createSnow () {
+                console.log("createSnow");
+                $('.snow').append('<div class="rSnow" style="position: fixed;top: 0;"><img src="../img/icon/Snow.png"></div> ');
+                $('.rSnow').css("top",mLeft*1000);
+            }
+        })
+    </script>
+</body>
+</html>

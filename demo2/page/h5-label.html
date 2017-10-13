@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--定义作者-->
+    <meta name="author" content="hyqin">
+    <!--定义网页的描述-->
+    <meta name="descripion" content="A test web for html5">
+        <!--定义关键词-->
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <!--每隔一段时间就刷新-->
+    <!--<meta http-equiv="refresh" content="5">-->
+    <title>test</title>
+    <!--定义一个base标签，以后所有的链接都是以这个为前缀-->
+    <base href="//localhost/demo2/" target="_blank">
+    <style>
+        hr{width: 100%;}
+        myGirl{display: block;background-color: aquamarine;padding: 20px;font-size: 20px;color: red;width: 100%;height: 50px;}
+    </style>
+</head>
+<body>
+    <p id="id">a line</p>
+    <hr>
+    <!--这是一个注释-->
+    <p class="math"> 下标 <sub>2</sub> </p>
+    <p class="math"> 上标 <sup>3</sup> </p>
+    <hr>
+    <!--显示全称-->
+    <acronym title="I love you very much">ぁぃて</acronym>
+    <acronym title="World Wide Web">WWW</acronym>
+    <hr>
+    <!--<img src="rain.jpg" alt="图片为什么消失在异次元了？">-->
+    <table>
+        <caption>水平标题</caption>
+        <colgroup>
+            <col span="2" style="color: #383;">
+            <col style="font-family: 微软雅黑">
+        </colgroup>
+        <tr>
+            <th>name</th>
+            <th>age</th>
+            <th>sex</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>18</td>
+            <td>male</td>
+        </tr>
+        <tr>
+            <td>Angy</td>
+            <td>20</td>
+            <td>female</td>
+        </tr>
+    </table>
+
+    <table border="1" cellpadding="10" cellspacing="0">
+        <caption>垂直标题</caption>
+        <tr>
+            <th>name</th>
+            <td>Tome</td>
+            <td>Allen</td>
+        </tr>
+        <tr>
+            <th>sex</th>
+            <td>male</td>
+            <td>female</td>
+        </tr>
+        <tr>
+            <th>age</th>
+            <td>19</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <th>otto</th>
+            <td>he is a smart boy</td>
+            <td>a pretty girl</td>
+        </tr>
+    </table>
+    <hr>
+    <form action="">
+        <select name="" id="">
+            <option value="wings">wings</option>
+            <option value="lgd">lgd</option>
+            <option value="dc">dc</option>
+            <option value="newbee">newbee</option>
+            <option value="ig">ig</option>
+        </select>
+    </form>
+    <hr>
+    <!--自定义标签，自定义属性-->
+    <myGirl class="my-girl" name="angel" sex="beauty" onclick="poly(event)">
+        you are my girl
+    </myGirl>
+    <hr>
+    <!--视频-->
+    <!--<video src="source/hanfu.mp4" controls></video>-->
+
+    <!--插入音频文件-->
+    <audio src="source/Liekkas.mp3" controls autoplay></audio>
+    <hr>
+
+    <!--输入框的类型-->
+    <!--1.input的类型-->
+    <input type="color" name="favcolor">
+    <hr>
+
+    <!--数字选择，只能从10-100中间选-->
+    <input type="number" name="quantity" max="100" min="10">
+    <hr>
+
+    <!--范围选择-->
+    points: <input type="range" name="points" min="1" max="10">
+    <hr>
+
+    <!--自动为空的判断,不需要自己再写js来判断了, 但是需要放在form表单里面才能使用-->
+    <form action="">
+        带*号的必填： <input type="text" required>
+        <input type="submit">
+    </form>
+    <hr>
+    
+    <!--h5中的导航栏元素-->
+    <nav>
+        <a href="">html</a> |
+        <a href="">css</a> |
+        <a href="">javascript</a> |
+        <a href="">jquery</a> |
+        <a href="">ajax</a> |
+    </nav>
+    <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function poly(e){
+            console.log(e)
+            console.log(e.toElement.attributes.name.nodeValue)
+            console.log(e.toElement.attributes.sex.nodeValue)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气预报2</title>
+</head>
+<body>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    var url="https://api.thinkpage.cn/v3/weather/now.json";
+    var address="惠州";
+    function getData () {
+        $.ajax({
+            method:"post",
+            dataType:'jsonp',
+            data:{
+                "location":address,
+                "key":"y6bfhmh0qfno77ls",
+                "language":"zh-Hans",
+                "unit":"c"
+            },
+            url:url,
+            callback:getWeather,
+            success:function (result) {
+                console.log(JSON.stringify(result))
+            }
+        })
+    }
+    function getWeather (param) {
+        console.log(param);
+    }
+    getData();
+</script>
+</body>
+</html>
