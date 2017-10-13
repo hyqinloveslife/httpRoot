@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- meta使用viewport以确保页面可自由缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 引入 jQuery Mobile 样式 -->
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- 引入 jQuery 库 -->
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <!-- 引入 jQuery Mobile 库 -->
+    <script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>测试jquery mobile</title>
+</head>
+<body>
+
+    <!--滑到下一页-->
+    <!--
+        fade:默认
+        flip:从后向前翻转
+        flow：抛出，进入下一页
+        pop：弹窗
+        slide：从右向左滑动
+        slidefade：从右向左，淡入
+        slideup：
+        slidedown：
+        turn：转向下一页
+        none：无效果
+    -->
+    <a href="phone2.html" data-transition="slide" data-direction="reverse">跳转到下一页</a>
+
+    <div data-role="main" class="ui-content">
+        <div data-role="collapsible" data-collapsed="false" data-iconpos="right">
+            <h3>
+                可折叠模块
+                <hr>
+                模块详情
+            </h3>
+            <p>i hava a story</p>
+            <p>i hava a story</p>
+            <p>i hava a story</p>
+            <p>i hava a story</p>
+            <div data-role="collapsible" data-mini="true">
+                <h4>i hava a another story</h4>
+                <p>this is a another story</p>
+                <p>this is a another story</p>
+                <p>this is a another story</p>
+                <p>this is a another story</p>
+                <p>this is a another story</p>
+                <p>this is a another story</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div data-role="main" class="ui-content">
+        <h2>我的通讯录</h2>
+        <ul data-role="listview" data-autodividers="true" data-inset="true">
+            <li><a href="#">Adele</a></li>
+            <li><a href="#">Agnes</a></li>
+            <li><a href="#">Albert</a></li>
+            <li><a href="#">Billy</a></li>
+            <li><a href="#">Bob</a></li>
+            <li><a href="#">Calvin</a></li>
+            <li><a href="#">Cameron</a></li>
+            <li><a href="#">Chloe</a></li>
+            <li><a href="#">Christina</a></li>
+            <li><a href="#">Diana</a></li>
+            <li><a href="#">Gabriel</a></li>
+            <li><a href="#">Glen</a></li>
+            <li><a href="#">Ralph</a></li>
+            <li><a href="#">Valarie</a></li>
+        </ul>
+        <p>data-autodividers="true" 属性通过对列表项文本的首字母进行大写来创建分隔符。</p>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>测试jquery</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        #panel,#flip{
+            padding:5px;
+            text-align:center;
+            background-color:#e5eecc;
+            border:solid 1px #c3c3c3;
+        }
+        #panel{
+            padding:150px;/*滑动的距离*/
+            display:none;/*初始化状态*/
+        }
+    </style>
+</head>
+<body>
+    <div id="flip">下拉</div>
+    <div id="panel">
+        hello world
+        <!--<div id="flip2">-->
+            <!--收缩-->
+        <!--</div>-->
+    </div>
+
+    <script>
+        //滑动的动画效果
+        $(function () {
+            var flip=$('#flip'),
+                panel=$('#panel');
+            flip.on('click',toggle);
+
+            function toggle () {
+                panel.slideToggle('slow');
+            }
+        })
+        
+
+//        $(function () {
+//            var flip=$('#flip'),
+//                panel=$('#panel'),
+//                flip2=$('#flip2');
+//
+//            flip.on('click',pullDown);
+//            flip2.on('click',pullUp)
+//
+//            function pullDown () {
+//                panel.slideDown('slow')
+//            }
+//            function pullUp() {
+//                panel.slideUp('slow')
+//            }
+//        })
+    </script>
+</body>
+</html>

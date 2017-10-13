@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>分页加载</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <style type="text/css">
+        *{margin: 0;
+            padding:0;}
+        .footer{
+            position: fixed;
+            left:0;
+            right:0;
+            bottom:0;
+            text-align: center;
+            background: #338833;
+            height:40px;
+            line-height:40px;
+        }
+        .content{
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <p>new1</p>
+        <p>new1</p>
+        <p>new1</p>
+        <p>new1</p>
+        <p>new1</p>
+        p{news}*100
+    </div>
+    <div id="test"></div>
+    <p class="footer">加载更多</p>
+    <script>
+        $(function () {
+            var footer=$('.footer'),
+                content=$('.content');
+            footer.fadeOut();
+            $(window).on('scroll',function () {
+                if($(window).scrollTop()+$(window).height()==$(document).height()){
+                    console.log('to bottom');
+                    footer.fadeIn();
+                }else{
+                    footer.fadeOut();
+                }
+            })
+            footer.on('click',getMore);
+            
+            function getMore () {
+                var result;
+                $('#test').load('resouce/content.json');
+                $.ajax({
+                   url:'resouce/content.json',
+                   dataType:'text',
+                   methods:'get',
+                   success:function (result) {
+                       var result=JSON.parse(result);
+                       console.log(JSON.stringify(result));
+                       var html='';
+                      $.each(result,function (i,key) {
+                          html+='<p>'+key.name + '&nbsp;&nbsp;' + key.age+'&nbsp;&nbsp;'+key.gender+ '</p>'
+                      })
+                      $('.content').append(html);
+                   },
+                   error:function () {
+
+                   }
+                });
+                $('.content').append('<hr>')
+            }
+        })
+    </script>
+
+</body>
+</html>

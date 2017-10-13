@@ -1,0 +1,106 @@
+*{margin: 0;
+    padding:0;}
+#guid{
+    height: 50px;position: fixed;
+    top:0;left:0;right: 0;
+    background: #e8e8e8;
+    display: flex;flex-direction: row;
+}
+#logo{
+    display: flex;
+    flex:1;
+    height: 50px;width: 150px;justify-content: center;align-items: center;
+    font-family: 微软雅黑;font-weight: 700;font-size: 24px;
+    color: #000;
+}
+#title{
+    display: flex;flex-direction: row;
+    flex:7;justify-content: center;align-items: center;
+}
+#sidebar-trigger{
+    display: flex;
+    flex:1;
+    height: 50px;width: 50px;
+    display: flex;justify-content: center;align-items: center;
+}
+#sidebar-trigger img{
+    width: 40px;height:40px;
+}
+/*  首页封面  */
+.photo-panel{
+    height: 600px;
+    width: 100%;
+    /*background-image:url("../img/photo/bg.jpg");*/
+    background:#888888 url("../img/photo/bg.jpg") no-repeat;
+}
+
+/*content*/
+#content{
+    display: flex;flex-direction: column;
+}
+.items{
+    display: flex;flex-direction: row;padding: 10px;
+}
+.item-left{
+    height: 300px;
+    flex: 2;background: #c3c3c3 url("../img/photo/shalou.jpg");
+}
+.item-right{
+    flex: 3;
+    padding: 20px;
+}
+
+#news{
+    width: 90%;margin: 10px auto;padding: 10px;
+    height: 400px;
+    display: flex;
+}
+.news-left{
+    flex: 1;
+
+}
+.news-right{
+    flex:1;
+}
+
+.mask{
+    display: none;
+    position: fixed;
+    top:0;
+    bottom:0;
+    left: 0;
+    right:0;
+    background: rgba(0,0,0,0.3);
+}
+#side-bar{
+    position: fixed;
+    top:0;
+    right:-300px;
+    bottom: 0;
+    width: 300px;
+    background: #333;
+    padding: 20px 0;
+    /*transition: right 0.5s;*/
+}
+#side-bar ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#side-bar ul a{
+    padding: 10px 30px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-family: 微软雅黑;
+    width: 100%;
+}
+#side-bar ul a:hover{
+    color: #eee;
+}
+.back-to-top{
+    position: fixed;
+    bottom:30px;
+    right:30px;width: 30px;height: 30px;
+    /*border:1px solid #888;*/
+}
