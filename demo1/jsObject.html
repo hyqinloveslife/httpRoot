@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js的面向对象编程</title>
+</head>
+<body>
+    <div id="demo">who?</div>
+    <button type="button" value="加载新文档" onclick="newDoc()">加载新文档</button>
+
+    <script>
+        function person (name,age,sex,des) {
+            this.name=name;
+            this.age=age;
+            this.sex=sex;
+            this.des=des;
+        }
+
+        function newDoc () {
+            //直接跳转？那不是和location.href="url" 的效果一样吗？
+            window.location.assign("http://localhost/demo1/testPostMsg.html")
+        }
+        
+        xiaoming=new person("xiaoming","23","male","he is a gender boy")
+        var p=document.getElementById("demo")
+        p.addEventListener("click",getPerson);
+        function getPerson () {
+            p.innerHTML=xiaoming.name+', '+xiaoming.age+', '+xiaoming.sex+', '+xiaoming.des;
+            //浏览器的外置高度
+            console.log(window.innerWidth);
+            console.log(window.innerHeight);
+            console.log('');
+
+            //浏览器的内置高度,就是内部元素的高度和宽度
+            console.log(document.body.clientHeight);
+            console.log(document.body.clientWidth);
+            console.log('');
+
+            //screen.availWidth - 可用的屏幕宽度 | screen.availHeight - 可用的屏幕高度 1366*738 单位是像素px
+            console.log(screen.availWidth);
+            console.log(screen.availHeight);
+            console.log('')
+
+            //返回当前页面的url
+            console.log(location.href);
+
+            console.log(navigator);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>测试跨域问题</title>
+		<div id="demo">123</div>
+		<button id="mBtn">click</button>
+		<div style="width: 100px;height: 100px;background: #338833" onmouseover="mOver(this)"
+			 onmouseleave="mLeave(this)"></div>
+	</head>
+	<body>
+		<script>
+			var demo=document.getElementById("demo");
+			//添加点击事件
+			demo.addEventListener("click",displayDate);
+			demo.addEventListener("click",showAlert);
+			demo.addEventListener("click",function () {
+				alert("即使为一个对象添加多个相同的点击事件，也不会覆盖");
+			})
+			function displayDate () {
+				demo.innerHTML=Date();
+			}
+			function showAlert () {
+				console.log("这是demo标签的第二个点击事件")
+			}
+
+			function mOver (obj) {
+				obj.innerHTML="Orz!!!!!"
+			}
+			function mLeave (obj) {
+				obj.innerHTML="thank you!"
+			}
+		</script>
+	</body>
+</html>
