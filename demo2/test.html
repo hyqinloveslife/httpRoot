@@ -1,23 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>测试ajax的封装</title>
-</head>
-<body>
-    test
-    <div id="demo"></div>
-    <hr>
-    <div id="demo2"></div>
-    <hr>
-    <div id="div1"></div>
-    <hr>
-    <div id="clazz1" class="clazz1"></div>
-    <div class="clazz1"></div>
-    <hr>
-    <div class="clazz1"></div>
 
-<script src="js/jquery-1.11.3.min.js"></script>
-<script src="fengzhuang.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>测试ajax的封装</title>
+	</head>
+
+	<body>
+		test
+		<div id="demo"></div>
+		<hr>
+		<div id="demo2"></div>
+		<hr>
+		<div id="div1"></div>
+		<hr>
+		<div id="clazz1" class="clazz1"></div>
+		<div class="clazz1"></div>
+		<hr>
+		<div class="clazz1"></div>
+
+		<form name="timeForm">
+			<input type="hidden" name="time_end" value='<=Expire_time%>'>
+			<tr>
+				<td>
+					<div align="center">剩余时间</div>
+				</td>
+				<td class="time">
+					<div id="timer"></div>
+				</td>
+			</tr>
+		</form>
+		<script language="javascript">
+			setTimeout("show_time()", 1000);
+
+			function show_time() {
+				var time_distance, str_time;
+				var int_day, int_hour, int_minute, int_second;
+				var time_now = new Date();
+				time_now = time_now.getTime(); //取系统现在时间
+				time_distance = timeForm.time_end.value - time_now;
+				//时间间隔。timeForm.time_end.value是竞拍商品的到期时间
+				if(time_distance > 0) {
+					//取出间隔时间的天、小时、分,java中时间换成毫秒是按照1000*60*60*24这样的换算方式转的
+					int_day = Math.floor(time_distance / 86400000)
+					time_distance -= int_day * 86400000;
+					int_hour = Math.floor(time_distance / 3600000)
+					time_distance -= int_hour * 3600000;
+					int_minute = Math.floor(time_distance / 60000)
+					time_distance -= int_minute * 60000;
+					int_second = Math.floor(time_distance / 1000)
+
+					if(int_hour < 10)
+						int_hour = "0" + int_hour;
+					if(int_minute < 10)
+						int_minute = "0" + int_minute;
+					if(int_second < 10)
+						int_second = "0" + int_second;
+					str_time = int_day + "天<br>" + int_hour + ":" + int_minute + ":" + int_second;
+					timer.innerHTML = str_time;
+					setTimeout("show_time()", 1000); //循环调用
+				} else {
+					timer.innerHTML = "over";
+					clearTimeout(timerID)
+				}
+			}
+		</script>
+
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="fengzhuang.js"></script>
+	</body>
+
 </html>

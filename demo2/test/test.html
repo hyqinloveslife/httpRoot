@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>add input section</title>
+	</head>
+	<body>
+		
+		<div>
+			<input type="text" name="username" placeholder="username" />
+			<br />
+			<input type="text" name="password" placeholder="password" />	
+		</div>
+		<div id="section"></div>
+		<input type="button" value="ok" id="ok" />
+			
+		<button id="btnAdd">add</button>
+	</body>
+	
+	<script src="../js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$('#btnAdd').on('click',function(){
+			
+			var _html = '';
+			_html += '<div>';
+			_html +='<input type = "text" name = "station" placeholder = "station" /> ';
+			_html +='</div>'
+			$('#section').append(_html);
+		});
+		
+		$('#ok').on('click',function(){
+			var arry = new Array();
+			var els = document.getElementsByName("station");
+			for (var i=0;i<els.length;i++) {
+				//alert(els[i].value);
+				arry.push(els[i].value);
+			}
+			alert(arry);
+		});
+	</script>
+</html>
