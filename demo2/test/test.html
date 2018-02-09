@@ -18,13 +18,16 @@
 	
 	<script src="../js/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript">
+		var count=0;
 		$('#btnAdd').on('click',function(){
 			
 			var _html = '';
 			_html += '<div>';
-			_html +='<input type = "text" name = "station" placeholder = "station" /> ';
+			_html +='<input type = "text"  name = "station'+count+'" placeholder = "station" />';
+			_html +='<button onclick="btnRemove(this)">remove</button>';
 			_html +='</div>'
 			$('#section').append(_html);
+			count++;
 		});
 		
 		$('#ok').on('click',function(){
@@ -36,5 +39,10 @@
 			}
 			alert(arry);
 		});
+		
+		function btnRemove(data){
+			data.parentNode.remove(data);
+		}
+		
 	</script>
 </html>
